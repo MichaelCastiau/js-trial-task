@@ -1,14 +1,18 @@
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {getUsers, getUsersBasicInfo, getUsersFail, getUsersSuccess} from './store.actions';
-import {catchError, map, of, switchMap} from 'rxjs';
+import {catchError, map, of, switchMap, withLatestFrom} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {UsersService} from '../services/users.service';
+import {selectUsersLength} from './store.selectors';
+import {Store} from '@ngrx/store';
+import {IAppState} from './store';
 
 @Injectable()
 export class StoreEffects {
   getUserIds$ = createEffect(() => this.actions$.pipe(
     ofType(getUsers),
-    switchMap((action) => this.api.getUsersBasicInfo(action.length).pipe(
+    withLatestFrom(this.store.pipe(selectUsersLength)),
+    switchMap(([action, length]) => this.api.getUsersBasicInfo(length).pipe(
       map(users => getUsersBasicInfo({users})),
       catchError(err => of(getUsersFail(err)))
     ))
@@ -22,6 +26,6 @@ export class StoreEffects {
     ))
   ))
 
-  constructor(private actions$: Actions, private api: UsersService) {
+  constructor(private actions$: Actions, private api: UsersService, private store: Store<IAppState>) {
   }
 }

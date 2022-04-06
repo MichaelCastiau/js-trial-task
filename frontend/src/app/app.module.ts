@@ -14,12 +14,14 @@ import {CommonModule} from '@angular/common';
 import {PaginationComponent} from './pagination/pagination.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RelativeLoginPipe} from './pipes/relative-login.pipe';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PaginationComponent,
-    RelativeLoginPipe
+    RelativeLoginPipe,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

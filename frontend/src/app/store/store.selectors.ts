@@ -7,3 +7,7 @@ export const selectUsers: OperatorFunction<IAppState, Array<IUser>> = state$ => 
   select(coreSelector),
   select(state => state.users)
 )
+export const selectUsersLength: OperatorFunction<IAppState, number> = state$ => state$.pipe(
+  select(coreSelector),
+  select(state => state.usersLength)
+);

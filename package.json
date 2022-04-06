@@ -3,10 +3,14 @@
   "version": "1.0.1",
   "description": "Erasys JavaScript Trial Task",
   "scripts": {
+    "start": "concurrently \"cd backend && npm start\" \"cd frontend && npm start\" --kill-others"
   },
   "author": "erasys GmbH",
   "license": "ISC",
   "engines": {
     "node": ">= 6"
+  },
+  "devDependencies": {
+    "concurrently": "^7.1.0"
   }
 }

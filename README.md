@@ -1,78 +1,57 @@
 # Erasys JavaScript Trial Task
-Users are very important on ROMEO. That's why we want you to implement an app that shows a list of users. We have included a simple server with two API endpoints that give you the required data.
 
-## Requirements
-- Create a JavaScript app (you can use your favorite `npm` packages and frameworks) that shows the results in a layout similar to the following screenshot:
-![](backend/data/mockup.jpg)
+Trial task application from Michael Castiau.
 
-- Make sure that a single item shows the following data:
-  - Username
-  - Age
-  - Image
-  - Location and distance
-  - Headline
-  - Relative last login time (e.g. 6 minutes ago)
+This application fetches users from a remote api and displays basic user information. The frontend application is Angular based and uses the latest Redux and RxJs technologies.
 
-  *The screenshot above is just an illustration of what we have in mind. Feel free to use it as a starting point, or implement your own design.*
+Extensive use of CSS allows for a coherent visual presentation. Scroll to the bottom of the page to load additional user profiles.
 
-- The app should work on all screen sizes
-- Include your `git` history when you send us your code
-
-## Server
-1. Clone this repository
-2. `npm install`
-3. `npm start`
-4. The API is available on [http://localhost:3000](http://localhost:3000)
-
-## API description
-### `GET /api/search?length=32`
-### `GET /api/search?length=32&sorting=[DISTANCE|ACTIVITY]`
-Returns a list of user profiles with some basic information.
-
-#### Example output
-```javascript
-{
-  "cursors": {
-    "after": (string)
-  },
-  "total": (number),
-  "items": [{
-    "id": (string),
-    "name": (string),
-    "picture": {
-      "comment": (string),
-      "url": (string)
-    },
-    ...
-  }]
-}
+## Running the application locally
+First install dependencies of both backend and frontend applications.
+Run in a terminal:
+```shell
+cd backend
+npm i # or yarn install
+cd frontend
+npm i # or yarn install
 ```
+Then start both application by running the `start` command in the root of the project:
+````shell
+# in js-trial-task
+npm run start
+````
 
-### `/api/profiles?ids=_id1_&ids=_id2_&ids=...`
-Returns an array of detailed user data matching the given ids.
+You can off course also start both backend and frontend in their respective directories.
+Additionally install the Redux devtools extension in your browser to inspect redux activity.
 
-#### Example output
-```javascript
-[
-  {
-    "id": (string),
-    "location": {
-      "name": (string),
-      "distance": (number)
-    },
-    "headline": (string),
-    "personal": {
-      "age": (number),
-      ...
-    },
-    "sexual": {
-      "anal_position": (string),
-      ...
-    },
+## Application Overview
 
-    {
-      "id": (string),
-      ...
-    }
-]
-```
+This repo is a monorepo containing an:
+- Express application running on Node
+- Angular application running a dev server
+
+The directory structure of the project was refactored to a monorepo with seperate package.json files. This will play out nicely
+when integrating deployment using Docker ao.
+
+The frontend application can be found in the `frontend` directory.
+
+## Frontend
+
+The frontend application is an Angular 12 application using Redux and RxJs.
+
+The `PaginationComponent` is responsible for initializing the app users and loading extra users. This component can be found at
+`frontend/src/app/pagination/pagination.component.ts`
+
+Fetching users is done in three steps:
+- The `/api/search` endpoint is used with the length parameter to get basic user data
+- the ids of the users are filtered out of that data
+- the `/api/profiles` endpoint is used to get the detailed data of these users
+
+These operations are performed entirely using the Redux pattern. All redux related logic can be found in the 
+`frontend/src/app/store` directory.
+
+> TODO: right now when adding new users to the list, the existing users are not cached. It would be a great addition to add
+> an 'offset' to the length parameter for the search api endpoint to offload the server.
+
+When the user scrolls to the bottom of the page, the `getUsers` action is dispatched again,
+adding an offset to the length parameter.

@@ -1,19 +1,31 @@
 @use "../assets/variables";
 @use "../assets/mixins";
 
+:host-context {
+  display: flex;
+  justify-content: center;
+}
+
+.app-container {
+  max-width: 1200px;
+}
+
 .o-users-container {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
 
   .m-user-item {
-    margin-right: variables.$spacer;
+    box-sizing: border-box;
+    flex-basis: 20%;
     margin-bottom: variables.$spacer;
     position: relative;
-    max-width: variables.$avatar-size-mobile;
+    transition: all 250ms ease;
+    padding: variables.$spacer-md;
+    border-radius: variables.$spacer;
 
-    @include mixins.on-desktop() {
-      max-width: variables.$avatar-size-desktop;
+    &:hover {
+      background: variables.$brand-light;
     }
 
     .a-online-status {
@@ -25,7 +37,6 @@
       font-size: 8pt;
       transform: translateY(-(variables.$spacer-sm / 2));
       border-radius: variables.$spacer-sm;
-      height: variables.$spacer-sm * 2;
       padding: variables.$spacer-sm variables.$spacer variables.$spacer-sm variables.$spacer-sm;
 
       &::before {
@@ -56,16 +67,15 @@
     }
 
     .m-user-avatar {
-      height: variables.$avatar-size-mobile;
       width: variables.$avatar-size-mobile;
       background: variables.$brand;
       position: relative;
       overflow: hidden;
       border-radius: variables.$border-radius;
+      aspect-ratio: 1/1;
 
       @include mixins.on-desktop() {
-        height: variables.$avatar-size-desktop;
-        width: variables.$avatar-size-desktop;
+        width: 100%;
       }
 
       img {
@@ -74,9 +84,10 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        aspect-ratio: 1/1;
 
         @include mixins.on-desktop() {
-          width: variables.$avatar-size-desktop;
+          width: 100%;
         }
       }
     }
@@ -105,6 +116,16 @@
 
       p {
         font-size: variables.$font-small;
+      }
+    }
+
+    .a-distance {
+      font-size: variables.$font-small;
+      display: flex;
+      align-content: center;
+
+      img {
+        height: 1rem;
       }
     }
   }

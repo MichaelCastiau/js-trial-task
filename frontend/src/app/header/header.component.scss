@@ -1,0 +1,9 @@
+@use "../../assets/variables";
+
+.o-header {
+  padding: variables.$spacer-md;
+
+  p {
+    line-height: 1.2rem;
+  }
+}

@@ -4,10 +4,12 @@ import {getUsers, getUsersBasicInfo, getUsersFail, getUsersSuccess} from './stor
 import {getRelativeLastLoginInMinutes} from '../helpers';
 
 export const storeReducer = createReducer<IAppState>({
-    users: []
+    users: [],
+    usersLength: 15
   },
   on(getUsers, (state) => ({
     ...state,
+    usersLength: state.usersLength + 10,
     errorGettingUsers: null
   })),
   on(getUsersFail, (state, {error}) => ({
