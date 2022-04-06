@@ -15,13 +15,15 @@ import {PaginationComponent} from './pagination/pagination.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RelativeLoginPipe} from './pipes/relative-login.pipe';
 import { HeaderComponent } from './header/header.component';
+import { UserItemComponent } from './user-item/user-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PaginationComponent,
     RelativeLoginPipe,
-    HeaderComponent
+    HeaderComponent,
+    UserItemComponent
   ],
   imports: [
     BrowserModule,

@@ -1,29 +1,7 @@
 <div class="app-container">
   <app-header></app-header>
   <div class="o-users-container">
-    <div class="m-user-item" *ngFor="let user of (users$ | async)"
-         [class.is-online]="user?.online_status == 'ONLINE'"
-         [class.is-date]="user?.online_status == 'DATE'">
-      <div class="m-user-avatar">
-        <span class="a-online-status">
-          {{ user | relativeLogin }}
-        </span>
-        <img *ngIf="user.picture?.url" [src]="user?.picture?.url" alt="avatar"/>
-      </div>
-      <div class="m-user-data">
-        <div class="a-username" [title]="user.name">
-          <span class="a-user-name">{{ user.name }}</span>
-          <span class="a-user-age">{{ user?.personal?.age }}</span>
-        </div>
-        <p>
-          {{ user?.headline }}
-        </p>
-        <div class="a-distance">
-          <img src="assets/images/location.svg" alt="location"/>
-          {{ user.location?.distance }} km
-        </div>
-      </div>
-    </div>
+    <app-user-item *ngFor="let user of (users$ | async)" [user]="user"></app-user-item>
   </div>
 
   <app-pagination></app-pagination>

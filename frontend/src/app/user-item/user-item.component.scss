@@ -1,0 +1,124 @@
+@use "../../assets/variables";
+@use "../../assets/mixins";
+
+.m-user-item {
+  box-sizing: border-box;
+  margin-bottom: variables.$spacer;
+  position: relative;
+  transition: all 250ms ease;
+  padding: variables.$spacer-md;
+  border-radius: variables.$spacer;
+
+  &:hover {
+    background: variables.$brand-light;
+  }
+
+  .a-online-status {
+    position: absolute;
+    right: variables.$spacer-md;
+    top: variables.$spacer-md;
+    background: variables.$brand;
+    z-index: variables.$layer-front;
+    font-size: 8pt;
+    transform: translateY(-(variables.$spacer-sm / 2));
+    border-radius: variables.$spacer-sm;
+    padding: variables.$spacer-sm variables.$spacer variables.$spacer-sm variables.$spacer-sm;
+
+    &::before {
+      content: ' ';
+      position: absolute;
+      right: variables.$spacer-sm;
+      top: 50%;
+      height: variables.$spacer-md;
+      width: variables.$spacer-md;
+      border-radius: 50%;
+      background: lighten(variables.$brand, 5%);
+      z-index: variables.$layer-front + 1;
+      transform: translateY(-50%);
+    }
+  }
+
+  &.is-date .a-online-status, &.is-online .a-online-status {
+    background: none;
+  }
+
+  &.is-date .a-online-status::before {
+    background: variables.$color-date;
+  }
+
+  &.is-online .a-online-status::before {
+    background: variables.$color-online;
+  }
+
+  .m-user-avatar {
+    width: variables.$avatar-size-mobile;
+    background: variables.$brand;
+    position: relative;
+    overflow: hidden;
+    border-radius: variables.$border-radius;
+    aspect-ratio: 1/1;
+
+    @include mixins.on-desktop() {
+      width: 100%;
+    }
+
+    img {
+      width: variables.$avatar-size-mobile;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      aspect-ratio: 1/1;
+      z-index: variables.$layer-default;
+
+      &.a-default-avatar {
+        top: 60%; //Offset the default user image a bit
+      }
+
+      &.a-avatar {
+        z-index: variables.$layer-default + 1;
+      }
+
+      @include mixins.on-desktop() {
+        width: 100%;
+      }
+    }
+  }
+
+  .m-user-data {
+    padding: variables.$spacer-sm;
+    max-width: 100%;
+
+    .a-username {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: 100%;
+      display: flex;
+
+      .a-user-name {
+        flex: 1;
+        display: block;
+      }
+
+      .a-user-age {
+        color: lighten(variables.$brand, 50%);
+        text-align: right;
+      }
+    }
+
+    p {
+      font-size: variables.$font-small;
+    }
+  }
+
+  .a-distance {
+    font-size: variables.$font-small;
+    display: flex;
+    align-content: center;
+
+    img {
+      height: 1rem;
+    }
+  }
+}
