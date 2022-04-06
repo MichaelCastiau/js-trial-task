@@ -1,0 +1,111 @@
+@use "../assets/variables";
+@use "../assets/mixins";
+
+.o-users-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  .m-user-item {
+    margin-right: variables.$spacer;
+    margin-bottom: variables.$spacer;
+    position: relative;
+    max-width: variables.$avatar-size-mobile;
+
+    @include mixins.on-desktop() {
+      max-width: variables.$avatar-size-desktop;
+    }
+
+    .a-online-status {
+      position: absolute;
+      right: variables.$spacer-md;
+      top: variables.$spacer-md;
+      background: variables.$brand;
+      z-index: variables.$layer-front;
+      font-size: 8pt;
+      transform: translateY(-(variables.$spacer-sm / 2));
+      border-radius: variables.$spacer-sm;
+      height: variables.$spacer-sm * 2;
+      padding: variables.$spacer-sm variables.$spacer variables.$spacer-sm variables.$spacer-sm;
+
+      &::before {
+        content: ' ';
+        position: absolute;
+        right: variables.$spacer-sm;
+        top: 50%;
+        height: variables.$spacer-md;
+        width: variables.$spacer-md;
+        border-radius: 50%;
+        background: lighten(variables.$brand, 5%);
+        z-index: variables.$layer-front + 1;
+        //  box-shadow: variables.$box-shadow-light;
+        transform: translateY(-50%);
+      }
+    }
+
+    &.is-date .a-online-status, &.is-online .a-online-status {
+      background: none;
+    }
+
+    &.is-date .a-online-status::before {
+      background: variables.$color-date;
+    }
+
+    &.is-online .a-online-status::before {
+      background: variables.$color-online;
+    }
+
+    .m-user-avatar {
+      height: variables.$avatar-size-mobile;
+      width: variables.$avatar-size-mobile;
+      background: variables.$brand;
+      position: relative;
+      overflow: hidden;
+      border-radius: variables.$border-radius;
+
+      @include mixins.on-desktop() {
+        height: variables.$avatar-size-desktop;
+        width: variables.$avatar-size-desktop;
+      }
+
+      img {
+        width: variables.$avatar-size-mobile;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        @include mixins.on-desktop() {
+          width: variables.$avatar-size-desktop;
+        }
+      }
+    }
+
+    .m-user-data {
+      padding: variables.$spacer-sm;
+      max-width: 100%;
+
+      .a-username {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 100%;
+        display: flex;
+
+        .a-user-name {
+          flex: 1;
+          display: block;
+        }
+
+        .a-user-age {
+          color: lighten(variables.$brand, 50%);
+          text-align: right;
+        }
+      }
+
+      p {
+        font-size: variables.$font-small;
+      }
+    }
+  }
+}

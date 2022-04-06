@@ -1,6 +1,21 @@
 $brand: #0f577a;
 $gradient: linear-gradient(346deg, rgba(15, 87, 122, 1) 27%, rgba(17, 123, 175, 1) 75%);
+$brand-disabled: grey;
+$color-online: #14ff95;
+$color-date: #f23f8c;
 
-$spacer: 25px;
+$box-shadow-light: 0px 0px 5px 1px #333;
+
+$spacer: 21px;
+$spacer-md: 10px;
+$spacer-sm: $spacer / 3;
+
+
+$avatar-size-mobile: 150px;
+$avatar-size-desktop: 200px;
+$border-radius: 15px;
 
 $font-title: 'Open Sans', Arial, sans-serif;
+$font-small: 10pt;
+
+$layer-front: 10;

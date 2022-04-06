@@ -11,10 +11,15 @@ import {HttpClientModule} from '@angular/common/http';
 import {StoreEffects} from './store/store.effects';
 import {storeReducer} from './store/store.reducer';
 import {CommonModule} from '@angular/common';
+import {PaginationComponent} from './pagination/pagination.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {RelativeLoginPipe} from './pipes/relative-login.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PaginationComponent,
+    RelativeLoginPipe
   ],
   imports: [
     BrowserModule,
@@ -25,10 +30,11 @@ import {CommonModule} from '@angular/common';
       maxAge: 50,
       logOnly: environment.production
     }),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
-    UsersService
+    UsersService,
   ],
   bootstrap: [AppComponent]
 })

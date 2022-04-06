@@ -8,9 +8,17 @@ export class UsersService {
   constructor(private http: HttpClient) {
   }
 
-  getAllUsers(length?: number): Observable<Array<IUser>> {
+  getUsersBasicInfo(length?: number): Observable<Array<IUser>> {
     return this.http.get<{ items: Array<IUser> }>('/api/search', length && {
       params: {length: length}
-    }).pipe(map(result => result.items))
+    }).pipe(map((result) => result.items));
+  }
+
+  getUserDetails(ids: Array<string>): Observable<Array<IUser>> {
+    return this.http.get<Array<IUser>>('/api/profiles', {
+      params: {
+        ids
+      }
+    })
   }
 }

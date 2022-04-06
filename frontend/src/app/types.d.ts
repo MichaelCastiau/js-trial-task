@@ -8,9 +8,20 @@ export interface IUser {
   last_login: Date;
   is_plus: boolean;
   online_status: OnlineStatus;
+  personal?: {
+    age: number;
+  };
+  headline?: string;
+  location?: {
+    distance: number;
+  },
+  metadata?: {
+    recentlyLoggedIn?: boolean;
+  }
 }
 
 export enum OnlineStatus {
   Offline = 'OFFLINE',
-  Online = 'ONLINE'
+  Online = 'ONLINE',
+  Date = 'DATE'
 }
