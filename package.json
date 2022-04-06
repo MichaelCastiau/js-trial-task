@@ -2,20 +2,11 @@
   "name": "trial-task",
   "version": "1.0.1",
   "description": "Erasys JavaScript Trial Task",
-  "main": "index.js",
   "scripts": {
-    "start": "node ./index | bunyan"
   },
   "author": "erasys GmbH",
   "license": "ISC",
   "engines": {
     "node": ">= 6"
-  },
-  "dependencies": {
-    "bunyan": "^1.8.12",
-    "express": "^4.16.3",
-    "hashids": "^2.2.8",
-    "lodash": "^4.17.10",
-    "moment": "^2.22.2"
   }
 }

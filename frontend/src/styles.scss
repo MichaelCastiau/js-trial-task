@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@use "assets/variables";
+
+body {
+  box-sizing: border-box;
+  background: variables.$brand variables.$gradient;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  padding: variables.$spacer;
+}
+h1, h2, h3, h4 {
+  font-family: variables.$font-title;
+  color: white;
+}

@@ -5,7 +5,7 @@ let _ = require('lodash');
 let moment = require('moment');
 let Hashids = require('hashids/cjs');
 
-const USERS = require('../data/users.json');
+const USERS = require('./data/users.json');
 const TWO_DAYS_IN_MINUTES = 2 * 24 * 60;
 // assign some reasonably recent login_time to each user
 USERS.forEach(u => {

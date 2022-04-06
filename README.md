@@ -3,7 +3,7 @@ Users are very important on ROMEO. That's why we want you to implement an app th
 
 ## Requirements
 - Create a JavaScript app (you can use your favorite `npm` packages and frameworks) that shows the results in a layout similar to the following screenshot:
-![](./data/mockup.jpg)
+![](backend/data/mockup.jpg)
 
 - Make sure that a single item shows the following data:
   - Username
