@@ -49,7 +49,6 @@
         border-radius: 50%;
         background: lighten(variables.$brand, 5%);
         z-index: variables.$layer-front + 1;
-        //  box-shadow: variables.$box-shadow-light;
         transform: translateY(-50%);
       }
     }
