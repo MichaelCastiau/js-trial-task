@@ -7,8 +7,7 @@ import {getUsers} from '../store/store.actions';
 
 @Component({
   selector: 'app-pagination',
-  templateUrl: './pagination.component.html',
-  styleUrls: ['./pagination.component.scss']
+  template: ''
 })
 export class PaginationComponent implements OnInit, OnDestroy {
   selectInput: FormControl = new FormControl(10);

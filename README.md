@@ -15,14 +15,16 @@ npm i # or yarn install
 cd frontend
 npm i # or yarn install
 ```
-Then start both application by running the `start` command in the root of the project:
+Then install dependencies of the root directory and start both application by running the `start` command in the root of the project:
 ````shell
 # in js-trial-task
+npm i # or yarn install
 npm run start
 ````
 
 You can off course also start both backend and frontend in their respective directories.
 Additionally install the Redux devtools extension in your browser to inspect redux activity.
+The application is hosted on [http://localhost:4200](http://localhost:4200)
 
 ## Application Overview
 
