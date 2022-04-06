@@ -1,7 +1,10 @@
 import {Component} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {IAppState} from '../store/store';
-import {getUsers} from '../store/store.actions';
+import {IAppState} from './store/store';
+import {getUsers} from './store/store.actions';
+import {Observable} from 'rxjs';
+import {IUser} from './types';
+import {selectUsers} from './store/store.selectors';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +14,13 @@ import {getUsers} from '../store/store.actions';
 export class AppComponent {
   title = 'frontend';
 
+  users$: Observable<Array<IUser>>;
+
   constructor(private store: Store<IAppState>) {
   }
 
   ngOnInit() {
-    this.store.dispatch(getUsers({a: ''}))
+    this.users$ = this.store.pipe(selectUsers);
+    this.store.dispatch(getUsers({}));
   }
 }
