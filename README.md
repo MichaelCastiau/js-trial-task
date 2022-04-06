@@ -7,6 +7,9 @@ This application fetches users from a remote api and displays basic user informa
 Extensive use of CSS allows for a coherent visual presentation. Scroll to the bottom of the page to load additional user profiles.
 
 ## Running the application locally
+
+**This application required Node 12 or higher (preferably 14).**
+
 First install dependencies of both backend and frontend applications.
 Run in a terminal:
 ```shell

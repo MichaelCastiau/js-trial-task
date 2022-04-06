@@ -9,6 +9,15 @@
   max-width: 1200px;
 }
 
+.m-error {
+  background: variables.$color-date;
+  color: white;
+  margin: variables.$spacer-md;
+  padding: variables.$spacer-lg;
+  border-radius: variables.$border-radius;
+  font-family: variables.$font-title;
+}
+
 .o-users-container {
   display: flex;
   flex-wrap: wrap;

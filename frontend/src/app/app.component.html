@@ -1,8 +1,13 @@
 <div class="app-container">
   <app-header></app-header>
+  <div class="m-error" *ngIf="errorLoadingUsers$ | async">
+    <p>
+      We're having trouble reaching our servers at the moment. In the meantime, go to a bar and meet people!
+    </p>
+  </div>
   <div class="o-users-container">
     <app-user-item *ngFor="let user of (users$ | async)" [user]="user"></app-user-item>
   </div>
-
+  <app-loader *ngIf="isLoading$ | async"></app-loader>
   <app-pagination></app-pagination>
 </div>

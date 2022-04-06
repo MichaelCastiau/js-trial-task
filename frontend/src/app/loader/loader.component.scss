@@ -1,0 +1,35 @@
+@use "../../assets/variables";
+
+.m-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: variables.$spacer-lg;
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: variables.$spacer-lg;
+  height: variables.$spacer-lg;
+}
+
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: variables.$spacer-lg;
+  height: variables.$spacer-lg;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

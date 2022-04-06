@@ -1,5 +1,6 @@
 @use "../../assets/variables";
 @use "../../assets/mixins";
+@use "sass:math";
 
 .m-user-item {
   box-sizing: border-box;
@@ -20,7 +21,7 @@
     background: variables.$brand;
     z-index: variables.$layer-front;
     font-size: 8pt;
-    transform: translateY(-(variables.$spacer-sm / 2));
+    transform: translateY(-(math.div(variables.$spacer-sm , 2)));
     border-radius: variables.$spacer-sm;
     padding: variables.$spacer-sm variables.$spacer variables.$spacer-sm variables.$spacer-sm;
 

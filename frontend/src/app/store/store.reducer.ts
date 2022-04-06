@@ -5,16 +5,19 @@ import {getRelativeLastLoginInMinutes} from '../helpers';
 
 export const storeReducer = createReducer<IAppState>({
     users: [],
-    usersLength: 15
+    usersLength: 15,
+    isLoading: true
   },
   on(getUsers, (state) => ({
     ...state,
     usersLength: state.usersLength + 10,
-    errorGettingUsers: null
+    errorGettingUsers: null,
+    isLoading: true,
   })),
   on(getUsersFail, (state, {error}) => ({
     ...state,
-    errorGettingUsers: error
+    errorGettingUsers: error,
+    isLoading: false
   })),
   on(getUsersBasicInfo, (state, {users}) => ({
     ...state,
@@ -32,7 +35,8 @@ export const storeReducer = createReducer<IAppState>({
     }));
     return {
       ...state,
-      users: composedUsers
+      users: composedUsers,
+      isLoading: false
     }
   })
 );

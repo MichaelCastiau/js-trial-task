@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $brand: #0f577a;
 $brand-light: #117baf;
 $gradient: linear-gradient(346deg, $brand 27%, $brand-light 75%);
@@ -9,7 +11,8 @@ $box-shadow-light: 0px 0px 5px 1px #333;
 
 $spacer: 21px;
 $spacer-md: 10px;
-$spacer-sm: $spacer / 3;
+$spacer-sm: math.div($spacer, 3);
+$spacer-lg: $spacer * 2;
 
 $avatar-size-mobile: 150px;
 $avatar-size-desktop: 200px;
