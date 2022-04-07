@@ -58,9 +58,11 @@
     overflow: hidden;
     border-radius: variables.$border-radius;
     aspect-ratio: 1/1;
+    min-height: variables.$avatar-size-mobile;
 
     @include mixins.on-desktop() {
       width: 100%;
+      min-height: variables.$avatar-size-desktop;
     }
 
     img {
